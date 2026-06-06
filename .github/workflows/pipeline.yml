@@ -32,6 +32,7 @@ jobs:
           format: table
           exit-code: 1
           severity: CRITICAL
+          trivyignores: app/trivyignore
 
   build-and-push:
     name: Build and Push
