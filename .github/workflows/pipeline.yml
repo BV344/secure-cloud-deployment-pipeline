@@ -64,6 +64,13 @@ jobs:
     needs: build-and-push
 
     steps:
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_AUTHKEY }}
+          oauth-secret: ${{ secrets.TAILSCALE_AUTHKEY }}
+          tags: tag:ci
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
